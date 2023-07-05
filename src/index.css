@@ -28,7 +28,7 @@ input[type="submit"] {
 
 .item {
     text-align: center;
-    box-shadow: 0 0 10px #e50914;
+    box-shadow: 0 0 10px red;
     width: 300px;
     margin: 10px auto;
     padding-top: 5px;
