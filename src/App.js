@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+// Dynamic object properties
+
+
 const App = () => {
 //   const [fullName, setFullName] = useState('')
 //   const [email, setEmail] = useState('')
@@ -20,10 +23,12 @@ const App = () => {
     e.preventDefault()
 
     if(oneUser.fullName && oneUser.email && oneUser.age) {
-        const newUser = {fullName: oneUser.fullName, email: oneUser.email, age: oneUser.age}
+        // const newUser = { fullName: oneUser.fullName, email: oneUser.email, age: oneUser.age }
+        const newUser = {...oneUser, id: new Date().getTime()}
         setUsers((users) => {
             return [...users, newUser]
         })
+        setOneUser({fullName: "", email: "", age: ""})
     } else {
         console.log('empty values')
     } 
@@ -64,9 +69,9 @@ const App = () => {
         <input type="submit"/>
     </form>
 
-    {users.map((oneUser, index) => {
-        const {fullName, email, age} = oneUser
-        return <div className="item" key={index}>
+    {users.map((oneUser) => {
+        const {id, fullName, email, age} = oneUser
+        return <div className="item" key={id}>
             <h4>{fullName}</h4>
             <p>{email}</p>
             <p>{age}</p>
